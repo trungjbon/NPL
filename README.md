@@ -1,10 +1,10 @@
-# Lab 1 & Lab 2 – Tokenizer và CountVectorizer
+Tokenizer và CountVectorizer
 
 ## 1. Mô tả công việc
 ### Lab 1
 - Cài đặt interface `Tokenizer` với các phương thức trừu tượng.
 - Xây dựng:
-  - **SimpleTokenizer**: tách token dựa trên khoảng trắng.
+  - **SimpleTokenizer**: tách token dựa trên khoảng trắng và các ký hiệu đặc biệt dùng vòng lặp for để xử lý.
   - **RegexTokenizer**: dùng regex (`\w+|[^\w\s]`) để tách từ, dấu câu, ký hiệu đặc biệt.
 - Thử nghiệm trên dữ liệu mẫu và dataset **UD English EWT**.
 
