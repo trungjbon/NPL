@@ -1,5 +1,3 @@
-Tokenizer và CountVectorizer
-
 ## 1. Mô tả công việc
 ### Lab 1
 1. **Định nghĩa interface `Tokenizer`**
