@@ -1,27 +1,32 @@
-# NPL
+# Lab 1 & Lab 2 – Tokenizer và CountVectorizer
 
-Mô tả công việc
+## 1. Mô tả công việc
+### Lab 1
+- Cài đặt interface `Tokenizer` với các phương thức trừu tượng.
+- Xây dựng:
+  - **SimpleTokenizer**: tách token dựa trên khoảng trắng.
+  - **RegexTokenizer**: dùng regex (`\w+|[^\w\s]`) để tách từ, dấu câu, ký hiệu đặc biệt.
+- Thử nghiệm trên dữ liệu mẫu và dataset **UD English EWT**.
 
-Trong Lab 1 và Lab 2, tôi đã thực hiện các bước sau:
+### Lab 2
+- Cài đặt interface `Vectorizer` với các phương thức:
+  - `fit(corpus)`
+  - `transform(documents)`
+  - `fit_transform(corpus)`
+- Xây dựng **CountVectorizer**:
+  - Nhận `Tokenizer` làm input.
+  - Sinh vocabulary từ corpus.
+  - Biến đổi document thành vector đếm từ (document-term matrix).
+- Test trên corpus nhỏ và dataset **UD English EWT**.
 
-Lab 1:
+---
 
-Cài đặt interface Tokenizer (sử dụng abc.ABC và abstractmethod).
+## 2. Kết quả chạy code
 
-Xây dựng SimpleTokenizer: tách token dựa trên khoảng trắng.
-
-Xây dựng RegexTokenizer: sử dụng regex (\w+|[^\w\s]) để tách token, có thể bắt được dấu chấm câu và ký hiệu đặc biệt tốt hơn.
-
-Lab 2:
-
-Cài đặt interface Vectorizer với các phương thức fit, transform, fit_transform.
-
-Xây dựng CountVectorizer:
-
-Nhận một Tokenizer làm tham số.
-
-Dùng tokenizer để tạo vocabulary (tập từ duy nhất trong corpus).
-
-Biến mỗi document thành một document-term vector (mảng đếm số lần từ xuất hiện).
-
-Test trên corpus nhỏ và dataset UD English EWT.
+### Ví dụ corpus nhỏ
+```python
+corpus = [
+    "I love NLP.",
+    "I love programming.",
+    "NLP is a subfield of AI."
+]
