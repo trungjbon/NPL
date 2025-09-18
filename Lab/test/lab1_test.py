@@ -15,14 +15,17 @@ def main():
     simple_tokenizer = SimpleTokenizer()
     regex_tokenizer = RegexTokenizer()
 
-    print(simple_tokenizer.tokenize(sample1))
-    print(regex_tokenizer.tokenize(sample1))
+    print("Sample: ", sample1)
+    print("Simple Tokenizer", simple_tokenizer.tokenize(sample1))
+    print("Regex Tokenizer", regex_tokenizer.tokenize(sample1))
 
-    print(simple_tokenizer.tokenize(sample2))
-    print(regex_tokenizer.tokenize(sample2))
+    print("\nSample: ", sample2)
+    print("Simple Tokenizer", simple_tokenizer.tokenize(sample2))
+    print("Regex Tokenizer", regex_tokenizer.tokenize(sample2))
 
-    print(simple_tokenizer.tokenize(sample3))
-    print(regex_tokenizer.tokenize(sample3))
+    print("\nSample: ", sample3)
+    print("Simple Tokenizer", simple_tokenizer.tokenize(sample3))
+    print("Regex Tokenizer", regex_tokenizer.tokenize(sample3))
 
     # Test 2
     dataset_path = "Lab\\data\\UD_English-EWT\\en_ewt-ud-train.txt"
@@ -40,4 +43,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
