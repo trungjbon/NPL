@@ -22,6 +22,8 @@ Tokenizer và CountVectorizer
 ---
 
 ## 2. Kết quả chạy code
+### Lab 1
+
 
 ### Ví dụ corpus nhỏ
 ```python
