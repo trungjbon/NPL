@@ -2,26 +2,55 @@ Tokenizer và CountVectorizer
 
 ## 1. Mô tả công việc
 ### Lab 1
-- Cài đặt interface `Tokenizer` với các phương thức trừu tượng.
-- Xây dựng:
-  - **SimpleTokenizer**: tách token dựa trên khoảng trắng và các ký hiệu đặc biệt dùng vòng lặp for để xử lý.
-  - **RegexTokenizer**: dùng regex (`\w+|[^\w\s]`) để tách từ, dấu câu, ký hiệu đặc biệt.
-- Thử nghiệm trên dữ liệu mẫu và dataset **UD English EWT**.
+1. **Định nghĩa interface `Tokenizer`**
+   - Dùng `abc.ABC` và `abstractmethod` để định nghĩa phương thức `tokenize(text: str)`.
+
+2. **Cài đặt `SimpleTokenizer`**
+   - Implement class `SimpleTokenizer` kế thừa `Tokenizer`.
+   - Token hóa dựa trên hàm `for` để xử lý.
+
+3. **Cài đặt `RegexTokenizer`**
+   - Implement class `RegexTokenizer` kế thừa `Tokenizer`.
+   - Sử dụng regex `\w+|[^\w\s]` để tách cả từ, dấu câu, ký hiệu đặc biệt.
+
+4. **Test tokenizer**
+   - Chạy thử `SimpleTokenizer` và `RegexTokenizer` trên mẫu text ngắn và dataset UD English EWT.
+
 
 ### Lab 2
-- Cài đặt interface `Vectorizer` với các phương thức:
-  - `fit(corpus)`
-  - `transform(documents)`
-  - `fit_transform(corpus)`
+1. **Định nghĩa interface `Vectorizer`**
+   - Định nghĩa class `Vectorizer(ABC)` với các phương thức:
+     - `fit(corpus: list[str])`
+     - `transform(documents: list[str]) -> list[list[int]]`
+     - `fit_transform(corpus: list[str]) -> list[list[int]]`
+
+2. **Cài đặt `CountVectorizer`**
+   - Implement class `CountVectorizer` kế thừa `Vectorizer`.
+   - Constructor nhận `Tokenizer`.
+   - Trong `fit`:
+     - Dùng tokenizer để duyệt toàn bộ corpus.
+     - Thu thập tất cả token vào một tập hợp (set).
+     - Tạo `vocabulary_` (dict từ → index).
+   - Trong `transform`:
+     - Với mỗi document:
+       - Tạo vector toàn 0 có kích thước bằng vocab.
+       - Tokenize document.
+       - Với mỗi token có trong vocab, tăng giá trị tại vị trí index tương ứng.
+   - Trả về document-term matrix (list các vector).
 - Xây dựng **CountVectorizer**:
   - Nhận `Tokenizer` làm input.
   - Sinh vocabulary từ corpus.
   - Biến đổi document thành vector đếm từ (document-term matrix).
-- Test trên corpus nhỏ và dataset **UD English EWT**.
 
+3. **Test CountVectorizer**
+   - Chạy thử trên corpus nhỏ và dataset **UD English EWT**
+   - In vocab và document-term matrix.
+   
 ---
 
 ## 2. Kết quả chạy code
+- Chạy kết quả với các file lab1_test.py và lab2_test.py
+  
 ### Lab 1
 ```
 Sample:  Hello, world! This is a test.
@@ -74,5 +103,23 @@ Doc 5: them were being run by 2 officials of the Ministry of the Interior! The M
 [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 2, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
 ```
 
-## 3. Giải thích kết quả
+---
 
+## 3. Giải thích kết quả
+### SimpleTokenizer và RegexTokenizer
+- Kết quả test cho ra giống nhau trên 1 số ví dụ cơ bản và trên dataset UD English EWT
+- Nhưng triển khai SimpleTokenizer phức tạp hơn và sẽ khó khăn trong việc mở rộng các tiêu chí tách từ khác so với dùng biểu thức chính quy của RegexTokenizer
+
+### CountVectorizer
+- Vocabulary: tập hợp tất cả token duy nhất trong corpus, mỗi token gán một index.
+- Document-Term Matrix: mỗi document là một vector, số chiều bằng số token trong vocab.
+- Với corpus nhỏ: kết quả dễ đọc, minh họa rõ ràng.
+- Với dataset UD EWT: vocab rất lớn, ma trận thưa (sparse), cho thấy hạn chế của CountVectorizer trong thực tế.
+  
+### Khó khăn & Cách xử lý
+- Lỗi ModuleNotFoundError: Giải quyết bằng cách thêm
+```
+ import sys
+ import os
+ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+```
