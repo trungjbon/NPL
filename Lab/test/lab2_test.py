@@ -17,6 +17,9 @@ def main():
 
     X = vectorizer.fit_transform(corpus)
 
+    print("\n--- Corpus ---")
+    print(corpus)
+
     print("\n--- Vocabulary ---")
     print(vectorizer.vocabulary_)
     print("\n--- Document-Term Matrix ---")
@@ -46,4 +49,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
