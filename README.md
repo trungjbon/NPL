@@ -1,4 +1,4 @@
-## 1. Mô tả công việc
+## 1. Mô tả triển khai
 ### Lab 1
 1. **Định nghĩa interface `Tokenizer`**
    - Dùng `abc.ABC` và `abstractmethod` để định nghĩa phương thức `tokenize(text: str)`.
@@ -48,6 +48,10 @@
 
 ## 2. Kết quả chạy code
 - Chạy kết quả với các file lab1_test.py và lab2_test.py
+```
+python lab1_test.py
+python lab2_test.py
+```
   
 ### Lab 1
 ```
@@ -114,7 +118,7 @@ Doc 5: them were being run by 2 officials of the Ministry of the Interior! The M
 - Với corpus nhỏ: kết quả dễ đọc, minh họa rõ ràng.
 - Với dataset UD EWT: vocab rất lớn, ma trận thưa (sparse), cho thấy hạn chế của CountVectorizer trong thực tế.
   
-### Khó khăn & Cách xử lý
+### 4. Khó khăn & Cách xử lý
 - Lỗi ModuleNotFoundError: Giải quyết bằng cách thêm
 ```
  import sys
