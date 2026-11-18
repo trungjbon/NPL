@@ -1,0 +1,10 @@
+--- Performance Metrics ---
+Read dataset duration: 2.86 seconds
+Pipeline fitting duration: 1.25 seconds
+Data transformation duration: 0.42 seconds
+Writing results duration: 0.00 seconds
+Actual vocabulary size (after preprocessing): 578 unique terms
+HashingTF numFeatures set to: 20000
+Metrics file generated at: C:\Users\FPTSHOP\Courses\NLP\Lab_02\src\..\log\lab17_metrics.log
+
+For detailed stage-level metrics, view the Spark UI at http://localhost:4040 during execution.
